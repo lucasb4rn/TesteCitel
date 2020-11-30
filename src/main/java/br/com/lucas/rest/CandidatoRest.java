@@ -76,7 +76,7 @@ public class CandidatoRest {
 	@ResponseStatus(value = HttpStatus.OK)
 	@RequestMapping(value = "candidato/atualizar", method = RequestMethod.PUT)
 	@Transactional
-	public void atualizar(@Valid @RequestBody CandidatoJson candidatoJson, CandidatoJsonRepository repository) throws CandidatoNaoEncontradoException {
+	public void atualizar(@Valid @RequestBody CandidatoJson candidatoJson, CandidatoJsonRepository repository) throws CandidatoNaoEncontradoException, DatesExpection {
 		candidatoJsonService.atualizar(candidatoJson);
 	}
 	
