@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class InicioApplication {
 
 	public static void main(String[] args) {
-//		System.setProperty("server.servlet.context-path", "/elotech");
 		SpringApplication.run(InicioApplication.class, args);
 	}
 
