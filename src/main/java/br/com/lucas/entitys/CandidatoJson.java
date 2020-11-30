@@ -236,12 +236,12 @@ public class CandidatoJson {
 		this.peso = peso;
 	}
 
-	public String getTipo_sanguineo() {
+	public String getTipoSanguineo() {
 		return tipoSanguineo;
 	}
 
-	public void setTipo_sanguineo(String tipo_sanguineo) {
-		this.tipoSanguineo = tipo_sanguineo;
+	public void setTipoSanguineo(String tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
 	}
 
 	public int getNumero() {

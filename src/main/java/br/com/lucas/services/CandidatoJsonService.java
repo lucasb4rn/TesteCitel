@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -53,51 +54,51 @@ public class CandidatoJsonService {
 		List<CandidatoJson> listaCandidatosDoadoresFiltrada = listaCandidatosDoadores.stream().filter(e -> e.getPeso() > 50 && e.getIdade()  > 15 && e.getIdade() < 70).collect(Collectors.toList());
 
 		List<CandidatoJson> doadoresParaTipoAmais = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("A+") || e.getTipo_sanguineo().equals("A-")
-						|| e.getTipo_sanguineo().equals("O+") || e.getTipo_sanguineo().equals("O-"))
+				.filter(e -> e.getTipoSanguineo().equals("A+") || e.getTipoSanguineo().equals("A-")
+						|| e.getTipoSanguineo().equals("O+") || e.getTipoSanguineo().equals("O-"))
 				.collect(Collectors.toList());
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("A+", doadoresParaTipoAmais.size()));
 		
 		
 		List<CandidatoJson> doadoresParaTipoAMenos = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("A+") || e.getTipo_sanguineo().equals("O-"))
+				.filter(e -> e.getTipoSanguineo().equals("A+") || e.getTipoSanguineo().equals("O-"))
 				.collect(Collectors.toList());
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("A-", doadoresParaTipoAMenos.size()));
 
 		List<CandidatoJson> doadoresParaTipoBMais = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("B+") || e.getTipo_sanguineo().equals("B-")
-						|| e.getTipo_sanguineo().equals("O+") || e.getTipo_sanguineo().equals("O-"))
+				.filter(e -> e.getTipoSanguineo().equals("B+") || e.getTipoSanguineo().equals("B-")
+						|| e.getTipoSanguineo().equals("O+") || e.getTipoSanguineo().equals("O-"))
 				.collect(Collectors.toList());
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("B+", doadoresParaTipoBMais.size()));
 
 		List<CandidatoJson> doadoresParaTipoBMenos = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("B-") || e.getTipo_sanguineo().equals("O-")
-						|| e.getTipo_sanguineo().equals("O+") || e.getTipo_sanguineo().equals("O-"))
+				.filter(e -> e.getTipoSanguineo().equals("B-") || e.getTipoSanguineo().equals("O-")
+						|| e.getTipoSanguineo().equals("O+") || e.getTipoSanguineo().equals("O-"))
 				.collect(Collectors.toList());
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("B-", doadoresParaTipoBMenos.size()));
 
 		List<CandidatoJson> doadoresParaTipoABMais = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("A+") || e.getTipo_sanguineo().equals("B+")
-						|| e.getTipo_sanguineo().equals("O+") || e.getTipo_sanguineo().equals("AB+")
-						|| e.getTipo_sanguineo().equals("A-") || e.getTipo_sanguineo().equals("B-")
-						|| e.getTipo_sanguineo().equals("O-") || e.getTipo_sanguineo().equals("AB-"))
+				.filter(e -> e.getTipoSanguineo().equals("A+") || e.getTipoSanguineo().equals("B+")
+						|| e.getTipoSanguineo().equals("O+") || e.getTipoSanguineo().equals("AB+")
+						|| e.getTipoSanguineo().equals("A-") || e.getTipoSanguineo().equals("B-")
+						|| e.getTipoSanguineo().equals("O-") || e.getTipoSanguineo().equals("AB-"))
 				.collect(Collectors.toList());
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("AB+", doadoresParaTipoABMais.size()));
 
 		List<CandidatoJson> doadoresParaTipoABMenos = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("A-") || e.getTipo_sanguineo().equals("B-")
-						|| e.getTipo_sanguineo().equals("O-") || e.getTipo_sanguineo().equals("AB-"))
+				.filter(e -> e.getTipoSanguineo().equals("A-") || e.getTipoSanguineo().equals("B-")
+						|| e.getTipoSanguineo().equals("O-") || e.getTipoSanguineo().equals("AB-"))
 				.collect(Collectors.toList());
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("AB-", doadoresParaTipoABMenos.size()));
 
 		List<CandidatoJson> doadoresParaTipoOmais = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("O+") || e.getTipo_sanguineo().equals("O-"))
+				.filter(e -> e.getTipoSanguineo().equals("O+") || e.getTipoSanguineo().equals("O-"))
 				.collect(Collectors.toList());
 		
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("O+", doadoresParaTipoOmais.size()));
 
 		List<CandidatoJson> doadoresParaTipoOmenos = listaCandidatosDoadoresFiltrada.stream()
-				.filter(e -> e.getTipo_sanguineo().equals("O-")).collect(Collectors.toList());
+				.filter(e -> e.getTipoSanguineo().equals("O-")).collect(Collectors.toList());
 		
 		listaDoadorPorTipoSanguineo.add(new TipoSanguineoQuantidadeDoadorDto("O-", doadoresParaTipoOmenos.size()));
 
