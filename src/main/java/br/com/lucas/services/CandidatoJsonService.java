@@ -248,11 +248,14 @@ public class CandidatoJsonService {
 
 	}
 
-	public CandidatoJson atualizar(CandidatoJson candidato) throws CandidatoNaoEncontradoException {
+	public CandidatoJson atualizar(CandidatoJson candidato) throws CandidatoNaoEncontradoException, DatesExpection {
 
 		boolean cpfValido = ValidaDocumentos.isValidoCPF(candidato.getCpf());
 		if (cpfValido == false)
 			throw new ValidacaoCPFException("Cpf com formato inválido!");
+		
+		if (new Date(candidato.getData_nasc()).getTime() > new Date().getTime())
+			throw new DatesExpection("Data de nascimento não pode ser uma data Futura!.");
 
 		CandidatoJson candidatoEncontradaNoBanco = candidatoJsonRepository.findByCpf(candidato.getCpf());
 		Optional<CandidatoJson> candidatoASerAtualizada = candidatoJsonRepository.findById(candidato.getId());
