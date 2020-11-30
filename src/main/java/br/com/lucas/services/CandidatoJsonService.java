@@ -224,7 +224,7 @@ public class CandidatoJsonService {
 			if (cpfValido == false)
 				throw new ValidacaoCPFException("Cpf com formato inválido!");
 
-			if (new Date(candidato.getData_nasc()).getTime() > new Date().getTime())
+			if (new Date(candidato.getDataNascimento()).getTime() > new Date().getTime())
 				throw new DatesExpection("Data de nascimento não pode ser uma data Futura!.");
 
 			// trocar para exists
@@ -242,7 +242,8 @@ public class CandidatoJsonService {
 			} else {
 				candidato.setId(1);
 			}
-
+			
+			candidato.setIdade(candidato.getIdade());
 			candidatoJsonRepository.save(candidato);
 
 		}
@@ -255,7 +256,7 @@ public class CandidatoJsonService {
 		if (cpfValido == false)
 			throw new ValidacaoCPFException("Cpf com formato inválido!");
 		
-		if (new Date(candidato.getData_nasc()).getTime() > new Date().getTime())
+		if (new Date(candidato.getDataNascimento()).getTime() > new Date().getTime())
 			throw new DatesExpection("Data de nascimento não pode ser uma data Futura!.");
 
 		CandidatoJson candidatoEncontradaNoBanco = candidatoJsonRepository.findByCpf(candidato.getCpf());

@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 @Table(name = "pes_candidato")
 @Entity
 public class CandidatoJson {
@@ -27,12 +26,12 @@ public class CandidatoJson {
 	private String nome;
 	@NotEmpty(message = "Campo não pode ser vazio")
 	@NotNull(message = "Campo não pode ser nulo!")
-	@Column(unique=true)
+	@Column(unique = true)
 	private String cpf;
 	private String rg;
 	@NotNull
 	@JsonProperty("data_nasc")
-	@Column(name="data_nascimento")
+	@Column(name = "data_nascimento")
 	private String dataNascimento;
 	@NotNull
 	private String sexo;
@@ -61,11 +60,13 @@ public class CandidatoJson {
 	private int peso;
 	@NotNull
 	@JsonProperty("tipo_sanguineo")
-	@Column(name="tipo_sanguineo")
+	@Column(name = "tipo_sanguineo")
 	private String tipoSanguineo;
-	
-	
-	public CandidatoJson() {}
+	@NotNull
+	private int idade;
+
+	public CandidatoJson() {
+	}
 
 	public CandidatoJson(Integer id, String nome, String cpf, String rg, String data_nasc, String sexo, String mae,
 			String pai, String email, String cep, String endereco, int numero, String bairro, String cidade,
@@ -90,6 +91,33 @@ public class CandidatoJson {
 		this.altura = altura;
 		this.peso = peso;
 		this.tipoSanguineo = tipo_sanguineo;
+	}
+
+	public CandidatoJson(Integer id, String nome, String cpf, String rg, String data_nasc, String sexo, String mae,
+			String pai, String email, String cep, String endereco, int numero, String bairro, String cidade,
+			String estado, String telefone_fixo, String celular, double altura, int peso, String tipo_sanguineo,
+			int idade) {
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.rg = rg;
+		this.dataNascimento = data_nasc;
+		this.sexo = sexo;
+		this.mae = mae;
+		this.pai = pai;
+		this.email = email;
+		this.cep = cep;
+		this.endereco = endereco;
+		this.numero = numero;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.telefone_fixo = telefone_fixo;
+		this.celular = celular;
+		this.altura = altura;
+		this.peso = peso;
+		this.tipoSanguineo = tipo_sanguineo;
+		this.idade = idade;
 	}
 
 	public Integer getId() {
@@ -122,14 +150,6 @@ public class CandidatoJson {
 
 	public void setRg(String rg) {
 		this.rg = rg;
-	}
-
-	public String getData_nasc() {
-		return dataNascimento;
-	}
-
-	public void setData_nasc(String data_nasc) {
-		this.dataNascimento = data_nasc;
 	}
 
 	public String getSexo() {
@@ -266,6 +286,18 @@ public class CandidatoJson {
 		}
 
 		return idade;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 }

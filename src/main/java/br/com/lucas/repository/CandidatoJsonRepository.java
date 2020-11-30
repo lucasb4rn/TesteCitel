@@ -21,7 +21,7 @@ public interface CandidatoJsonRepository extends JpaRepository<CandidatoJson, In
 	@Query("Select new br.com.lucas.entitys.dto.QuantidadePorEstadoDto (c.estado, count(*) as quantidade) from CandidatoJson c group by c.estado")
 	List<QuantidadePorEstadoDto> totalCanditosPorEstado();
 	
-	@Query("Select new br.com.lucas.entitys.dto.TipoSanguineoMediaDeIdadeDto (c.tipoSanguineo , round(AVG(extract(year from age(cast(c.dataNascimento as date)))))) from CandidatoJson c group by c.tipoSanguineo")
+	@Query("Select new br.com.lucas.entitys.dto.TipoSanguineoMediaDeIdadeDto (c.tipoSanguineo, round(AVG(c.idade))) from CandidatoJson c group by c.tipoSanguineo")
 	List<TipoSanguineoMediaDeIdadeDto> tipoSanguineoMediaDeIdade();
 	
 	CandidatoJson findByCpf(String cpf);
