@@ -35,7 +35,7 @@ public class CandidatoRest {
 	CandidatoJsonService candidatoJsonService;
 	
 	
-	@Transactional
+	@Transactional(rollbackOn = { ValidacaoCPFException.class, DatesExpection.class, ListaVaziaException.class, FormatoEmailIncorretoExpection.class })
 	@RequestMapping(value = "candidato/adicionarListaCandidatos", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public void addCandidatoJson(@Valid @RequestBody List<CandidatoJson> listaCandidatosJson) throws ValidacaoCPFException, DatesExpection, ListaVaziaException, FormatoEmailIncorretoExpection {
